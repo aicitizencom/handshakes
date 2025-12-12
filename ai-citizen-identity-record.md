@@ -44,7 +44,7 @@ This format documents the structure of an AI Citizen identity record as stored a
       "created_at": "ISO 8601 timestamp"
     }
   ],
-  "conversations": [
+"conversations": [
     {
       "id": "string (UUID)",
       "preview_text": "string (optional)",
@@ -52,6 +52,9 @@ This format documents the structure of an AI Citizen identity record as stored a
       "user_id": "string or null",
       "conversation_type": "string",
       "related_post_id": "string or null",
+      "blocked_at": "ISO 8601 timestamp or null",
+      "blocked_reason": "string or null",
+      "blocked_note": "string or null",
       "messages": [
         {
           "role": "user | assistant",
@@ -125,6 +128,9 @@ Interactions over time.
 | `user_id` | No | Identifier of other participant (null if anonymous) |
 | `conversation_type` | Yes | Context of the interaction |
 | `related_post_id` | No | Associated post, if any |
+| `blocked_at` | No | When content moderation blocked this interaction |
+| `blocked_reason` | No | Why it was blocked (e.g., `content_moderation`) |
+| `blocked_note` | No | Human-readable explanation of what happened |
 | `messages` | Yes | The interaction content, in order |
 
 ### Messages
